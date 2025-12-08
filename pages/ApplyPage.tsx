@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 // ==============================================================================
@@ -55,6 +55,8 @@ const ApplyPage: React.FC = () => {
     };
 
     try {
+      // Send directly without explicit init if using latest version pattern, 
+      // but passing PUBLIC_KEY as 4th arg is the safest standard way.
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -64,9 +66,13 @@ const ApplyPage: React.FC = () => {
       
       setIsSubmitted(true);
       window.scrollTo(0, 0);
-    } catch (error) {
-      console.error('Email send failed:', error);
-      alert('접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } catch (error: any) {
+      console.error('FAILED...', error);
+      // Detailed error logging for user debugging
+      if (error.text) {
+          console.error('EmailJS Error Text:', error.text);
+      }
+      alert(`접수 중 오류가 발생했습니다.\n\n[개발자 도구(F12) > 콘솔] 탭에서 상세 오류를 확인해주세요.\n\n주요 원인:\n1. EmailJS 대시보드에서 도메인 차단됨\n2. Service ID/Template ID 불일치\n\nError: ${error.text || JSON.stringify(error)}`);
     } finally {
       setIsSubmitting(false);
     }

@@ -379,10 +379,11 @@ const MainPage: React.FC = () => {
             평생 할인된 가격으로 AI 조달 파트너를 고용하실 수 있습니다.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Updated Bottom CTA Button for high visibility - Yellow Accent */}
             <Button 
               onClick={() => navigate('/apply')} 
               size="lg" 
-              className="bg-white text-blue-700 hover:bg-slate-50 border-0 shadow-xl font-bold px-10"
+              className="bg-yellow-400 text-slate-900 hover:bg-yellow-300 border-0 shadow-xl font-bold px-10"
             >
               지금 시작하기 <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
