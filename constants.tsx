@@ -33,7 +33,7 @@ export const PROBLEM_ITEMS: FeatureItem[] = [
   },
   {
     title: "검증되지 않은 데이터",
-    description: "단순 통계가 아닌 특허받은 AI 알고리즘(G2B DAMOA) 분석이 필요합니다.",
+    description: "단순 통계가 아닌 특허받은 AI 알고리즘(공공입찰 시스템) 분석이 필요합니다.",
     icon: Search
   },
   {
@@ -53,7 +53,7 @@ export const SERVICE_PROCESS = [
 export const KEY_FEATURES: FeatureItem[] = [
   {
     title: "특허받은 AI 분석",
-    description: "특허 제 10-2869603호. G2B DAMOA SYSTEM으로 최적의 낙찰 예정가를 산출합니다.",
+    description: "특허 제 10-2869603호. 공공입찰 시스템으로 최적의 낙찰 예정가를 산출합니다.",
     icon: Award
   },
   {

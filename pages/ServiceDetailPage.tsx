@@ -50,15 +50,16 @@ const ServiceDetailPage: React.FC = () => {
                 <table className="w-full text-left border-collapse min-w-[800px]">
                   <thead>
                     <tr>
-                      <th className="py-4 px-6 text-slate-500 font-medium w-1/4">구분</th>
-                      <th className="py-4 px-6 text-secondary font-bold text-lg bg-slate-50 w-1/4 text-center border-t-2 border-slate-200">기존 직원 채용</th>
-                      <th className="py-4 px-6 text-primary font-bold text-lg bg-blue-50 w-1/4 text-center border-t-2 border-primary relative">
-                        <div className="absolute -top-3 left-0 right-0 text-center">
-                          <span className="bg-primary text-white text-xs px-2 py-1 rounded-full">BEST</span>
-                        </div>
-                        조달플러스 (골드)
+                      <th className="py-4 px-6 text-slate-500 font-medium w-1/4 align-bottom">구분</th>
+                      <th className="py-4 px-6 text-secondary font-bold text-lg bg-slate-50 w-1/4 text-center border-t-2 border-slate-200 align-bottom">기존 직원 채용</th>
+                      {/* Fixed: Use flex column instead of absolute positioning to prevent clipping */}
+                      <th className="py-4 px-6 bg-blue-50 w-1/4 text-center border-t-2 border-primary align-bottom">
+                         <div className="flex flex-col items-center justify-end gap-2">
+                            <span className="bg-primary text-white text-xs px-2 py-0.5 rounded-full font-bold tracking-wide">BEST</span>
+                            <span className="text-primary font-bold text-lg">조달플러스 (골드)</span>
+                         </div>
                       </th>
-                      <th className="py-4 px-6 text-slate-700 font-bold text-lg bg-slate-50 w-1/4 text-center border-t-2 border-slate-300">조달플러스 (프리미엄)</th>
+                      <th className="py-4 px-6 text-slate-700 font-bold text-lg bg-slate-50 w-1/4 text-center border-t-2 border-slate-300 align-bottom">조달플러스 (프리미엄)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">

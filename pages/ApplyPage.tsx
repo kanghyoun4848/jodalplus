@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+// ==============================================================================
+// [중요] EmailJS 설정 영역
+// 1. Service ID: service_paran4848 (설정 완료)
+// 2. Template ID: template_2pes9v6 (설정 완료)
+// 3. Public Key: 8YLrHXeYtswAc_Ql3 (설정 완료)
+// ==============================================================================
+const SERVICE_ID = 'service_paran4848';
+const TEMPLATE_ID = 'template_2pes9v6'; 
+const PUBLIC_KEY = '8YLrHXeYtswAc_Ql3'; 
 
 const ApplyPage: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     companyName: '',
     contactPerson: '',
@@ -27,13 +39,37 @@ const ApplyPage: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
-    setTimeout(() => {
+    
+    setIsSubmitting(true);
+
+    // EmailJS로 보낼 데이터 객체 매핑
+    const templateParams = {
+      company_name: formData.companyName,
+      contact_person: formData.contactPerson,
+      phone: formData.phone,
+      reply_to: formData.email,
+      interests: formData.interests.join(', '),
+      to_email: 'paran6008@naver.com'
+    };
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+      
       setIsSubmitted(true);
       window.scrollTo(0, 0);
-    }, 1000);
+    } catch (error) {
+      console.error('Email send failed:', error);
+      alert('접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -47,8 +83,8 @@ const ApplyPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-secondary mb-4">신청이 완료되었습니다!</h2>
             <p className="text-slate-600 mb-8 leading-relaxed">
               성공적으로 접수되었습니다. <br/>
-              담당자가 검토 후 24시간 이내에 입력하신 연락처로<br/> 
-              상세 안내를 드리겠습니다.
+              담당자가 <strong>{formData.companyName}</strong>의 신청 내용을 확인 후<br/> 
+              <strong>24시간 이내</strong>에 안내 드리겠습니다.
             </p>
             <Button onClick={() => window.location.href = '/'} variant="outline">
               홈으로 돌아가기
@@ -145,8 +181,21 @@ const ApplyPage: React.FC = () => {
               </div>
 
               <div className="pt-6">
-                <Button type="submit" size="lg" fullWidth>
-                  무료 상담 및 체험 신청하기
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  fullWidth 
+                  disabled={isSubmitting}
+                  className="flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="animate-spin" size={20} />
+                      전송 중...
+                    </>
+                  ) : (
+                    '무료 상담 및 체험 신청하기'
+                  )}
                 </Button>
                 <p className="text-xs text-center text-slate-400 mt-4">
                   제출 시 개인정보 처리방침에 동의하는 것으로 간주합니다.

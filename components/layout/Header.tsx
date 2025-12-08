@@ -23,6 +23,11 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Determine standard text color based on scroll and path
+  // Since MainPage is now light-themed, we use dark text by default except for specific cases if needed
+  const textColorClass = 'text-slate-800'; 
+  const logoColorClass = 'text-slate-900';
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -33,10 +38,10 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-primary text-white p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors">
+            <div className="bg-primary text-white p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors shadow-sm">
               <BarChart2 size={24} />
             </div>
-            <span className={`text-xl font-bold tracking-tight ${isScrolled || location.pathname !== '/' ? 'text-secondary' : 'text-slate-900 md:text-white'}`}>
+            <span className={`text-xl font-bold tracking-tight ${logoColorClass}`}>
               조달<span className="text-primary">플러스</span>
             </span>
           </Link>
@@ -49,24 +54,24 @@ const Header: React.FC = () => {
                 to={item.path}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   location.pathname === item.path 
-                    ? 'text-primary' 
-                    : (isScrolled || location.pathname !== '/' ? 'text-slate-600' : 'text-slate-200')
+                    ? 'text-primary font-bold' 
+                    : textColorClass
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <Button onClick={handleApplyClick} size="sm">
+            <Button onClick={handleApplyClick} size="sm" className="shadow-md shadow-blue-500/20">
               베타 신청하기
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 text-slate-600"
+            className="md:hidden p-2 text-slate-800"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu className={!isScrolled && location.pathname === '/' ? 'text-white' : 'text-slate-900'} />}
+            {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
