@@ -54,6 +54,9 @@ const ApplyPage: React.FC = () => {
       to_email: 'paran6008@naver.com'
     };
 
+    // [디버깅용] 전송하려는 데이터 확인
+    console.log('Sending Email with params:', templateParams);
+
     try {
       // Send directly without explicit init if using latest version pattern, 
       // but passing PUBLIC_KEY as 4th arg is the safest standard way.
@@ -72,7 +75,7 @@ const ApplyPage: React.FC = () => {
       if (error.text) {
           console.error('EmailJS Error Text:', error.text);
       }
-      alert(`접수 중 오류가 발생했습니다.\n\n[개발자 도구(F12) > 콘솔] 탭에서 상세 오류를 확인해주세요.\n\n주요 원인:\n1. EmailJS 대시보드에서 도메인 차단됨\n2. Service ID/Template ID 불일치\n\nError: ${error.text || JSON.stringify(error)}`);
+      alert(`접수 중 오류가 발생했습니다.\n\n[오류 원인 확인 방법]\n1. F12 키를 눌러 개발자 도구를 엽니다.\n2. Console 탭을 확인하세요.\n\n* 흔한 오류 원인: EmailJS 대시보드에서 도메인(jodal-plus.com)이 허용되지 않음.\n\nError: ${error.text || JSON.stringify(error)}`);
     } finally {
       setIsSubmitting(false);
     }

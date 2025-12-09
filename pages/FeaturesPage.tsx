@@ -7,25 +7,30 @@ import { Award, Truck, ShieldCheck, Cpu, Database, Network } from 'lucide-react'
 const FeaturesPage: React.FC = () => {
   const navigate = useNavigate();
 
-  // Tech-focused feature list
+  // Tech-focused feature list - Updated patent title
   const TECH_SPECS = [
     {
       title: "Predictive Bid Modeling",
-      korTitle: "특허 기반 예측 모델링",
-      description: "특허 제 10-2869603호. 시계열 데이터 분석 및 경쟁사 투찰 패턴 마이닝(Pattern Mining)을 통해 통계적으로 유의미한 낙찰 예가를 도출하는 수학적 예측 엔진입니다.",
-      icon: Award
+      korTitle: "공공입찰 맞춤형 솔루션 제공 방법 및 시스템",
+      badge: "특허 등록 완료",
+      patentNumber: "제 10-2869603호",
+      description: "경쟁사의 투찰 패턴과 과거 데이터를 정밀 분석하여, 통계적으로 가장 유력한 '낙찰 예정가'를 도출합니다. 국가가 인정한 특허 기술로 낙찰 확률을 높이세요.",
+      icon: Award,
+      highlight: true
     },
     {
       title: "Supply Chain Optimization",
-      korTitle: "공급망 최적화 알고리즘",
-      description: "품목 분류 코드 기반의 매칭 엔진(Matching Engine)을 가동하여, 검증된 공급사 데이터베이스와 낙찰 기업을 자동으로 매핑하는 SCM 자동화 시스템입니다.",
-      icon: Truck
+      korTitle: "최적 공급망 매칭 시스템",
+      description: "낙찰 후 가장 어려운 '물품 구하기', 이제 걱정 마세요. AI가 물품 코드를 분석해 검증된 제조사와 유통사를 자동으로 연결해 드립니다.",
+      icon: Truck,
+      highlight: false
     },
     {
       title: "Human-in-the-Loop",
-      korTitle: "하이브리드 검증 시스템",
-      description: "AI 모델의 정량적 분석 결과를 도메인 전문가(Domain Expert)가 2차 검증(Validation)하는 프로세스를 구축하여, 예외 상황 리스크를 최소화했습니다.",
-      icon: ShieldCheck
+      korTitle: "전문가 교차 검증 시스템",
+      description: "AI의 분석 결과를 10년 경력의 전문가가 한 번 더 꼼꼼하게 확인합니다. 시스템의 신속함과 사람의 정확함, 두 가지 장점을 모두 갖췄습니다.",
+      icon: ShieldCheck,
+      highlight: false
     }
   ];
 
@@ -39,28 +44,63 @@ const FeaturesPage: React.FC = () => {
               Technology Stack
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-6">
-              Data Intelligence &<br/>
-              <span className="text-primary">AI Core Architecture</span>
+              압도적인 데이터 인텔리전스 &<br/>
+              <span className="text-primary">AI 핵심 아키텍처</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
               조달플러스는 단순 검색 서비스가 아닙니다.<br/>
-              수십 년간 축적된 공공 조달 빅데이터(Big Data)를 전처리 및 피처 엔지니어링하여 
+              수십 년간 축적된 공공 조달 빅데이터를 정밀 분석하여 
               구축된 <strong>엔터프라이즈급 조달 분석 플랫폼</strong>입니다.
             </p>
           </div>
 
-          {/* 3 Core Tech Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
+          {/* 3 Core Tech Grid - Highlighted Patent Card */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24 items-start">
             {TECH_SPECS.map((spec, index) => (
-              <div key={index} className="flex flex-col p-8 rounded-2xl border border-slate-100 bg-surface hover:shadow-lg transition-all duration-300 group">
-                <div className="w-14 h-14 bg-white border border-slate-200 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                  <spec.icon size={28} />
+              <div 
+                key={index} 
+                className={`flex flex-col p-8 md:p-10 rounded-3xl border transition-all duration-300 group relative
+                  ${spec.highlight 
+                    ? 'bg-blue-50/60 border-blue-200 shadow-xl lg:-mt-4 lg:mb-4 z-10' 
+                    : 'bg-white border-slate-100 hover:shadow-lg hover:-translate-y-1'
+                  }`}
+              >
+                {/* Highlight Badge */}
+                {spec.highlight && (
+                   <div className="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-xl shadow-sm">
+                      CORE TECH
+                   </div>
+                )}
+
+                {/* Icon Area - Enlarged */}
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-8 transition-colors 
+                  ${spec.highlight 
+                    ? 'bg-primary text-white shadow-lg shadow-blue-500/30' 
+                    : 'bg-white border-2 border-slate-100 text-slate-400 group-hover:border-primary group-hover:bg-primary group-hover:text-white'
+                  }`}
+                >
+                  <spec.icon size={40} strokeWidth={1.5} />
                 </div>
-                <div className="mb-4">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">{spec.title}</div>
-                  <h3 className="text-xl font-bold text-secondary">{spec.korTitle}</h3>
+
+                <div className="mb-6">
+                  {spec.badge && (
+                    <span className="inline-flex items-center gap-1.5 bg-white border border-blue-200 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-sm">
+                      <Award size={12} />
+                      {spec.badge}
+                    </span>
+                  )}
+                  <h3 className={`font-bold text-secondary leading-tight ${spec.highlight ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}`}>
+                    {spec.korTitle}
+                  </h3>
+                  {spec.patentNumber && (
+                     <div className="text-primary font-bold text-base mt-2 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        {spec.patentNumber}
+                     </div>
+                  )}
                 </div>
-                <p className="text-slate-600 leading-relaxed text-sm">
+                
+                <p className={`leading-relaxed ${spec.highlight ? 'text-slate-700 font-medium text-lg' : 'text-slate-500 text-base'}`}>
                   {spec.description}
                 </p>
               </div>
@@ -74,23 +114,23 @@ const FeaturesPage: React.FC = () => {
                 <Cpu size={20} />
                 <span>FINTECH ENGINE</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-4">Automated Financial<br/>Assessment Engine</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-secondary mb-4">적격심사 자동 평가 엔진</h3>
               <p className="text-slate-600 mb-6 leading-relaxed">
-                재무제표 데이터를 파싱(Parsing)하여 적격심사 점수를 실시간으로 시뮬레이션하는 핀테크 알고리즘입니다. 
-                유동비율, 부채비율 등 핵심 재무 지표(KPI)를 분석하고, 리스크 요인을 사전에 식별하여 최적의 입찰 전략을 수립합니다.
+                재무제표 데이터를 분석하여 적격심사 점수를 실시간으로 시뮬레이션하는 알고리즘입니다. 
+                유동비율, 부채비율 등 핵심 재무 지표를 분석하고, 리스크 요인을 사전에 파악하여 최적의 입찰 전략을 수립합니다.
               </p>
               <ul className="space-y-3 mb-8 text-slate-700 text-sm font-medium">
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                  경영상태 평가 자동화 (Credit Rating Automation)
+                  경영상태 평가 자동화
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                  실적 계수 연산 알고리즘 (Performance Scoring)
+                  실적 점수 계산 알고리즘
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                  신인도 리스크 팩터 분석 (Risk Factor Analysis)
+                  신인도 감점 요인 분석
                 </li>
               </ul>
               <Button variant="outline" onClick={() => navigate('/apply')}>
@@ -143,19 +183,19 @@ const FeaturesPage: React.FC = () => {
                 <Network size={20} />
                 <span>DATA PIPELINE</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Real-Time Event<br/>Streaming Architecture</h3>
+              <h3 className="text-2xl font-bold mb-4">실시간 공고 모니터링 시스템</h3>
               <p className="text-slate-300 mb-6 leading-relaxed">
-                ETL(Extract, Transform, Load) 파이프라인을 통해 분산된 공공 데이터 소스로부터 입찰 정보를 실시간으로 수집(Ingestion)합니다. 
-                사용자가 설정한 복합 필터링 규칙(Rule-based Filtering)에 따라 마이크로초 단위의 레이턴시로 맞춤형 알림을 전송하는 이벤트 구동형 아키텍처입니다.
+                데이터 파이프라인을 통해 나라장터 등 여러 공공 데이터 소스로부터 입찰 정보를 실시간으로 수집합니다. 
+                사용자가 설정한 조건에 맞는 공고가 올라오는 즉시 알림을 전송하는 이벤트 구동형 아키텍처입니다.
               </p>
               
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <div className="text-xs text-slate-400 mb-1">Latency</div>
+                  <div className="text-xs text-slate-400 mb-1">응답 속도</div>
                   <div className="text-xl font-mono text-primary font-bold">&lt; 100ms</div>
                 </div>
                 <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <div className="text-xs text-slate-400 mb-1">Data Points</div>
+                  <div className="text-xs text-slate-400 mb-1">데이터 처리량</div>
                   <div className="text-xl font-mono text-primary font-bold">3.5B+</div>
                 </div>
               </div>

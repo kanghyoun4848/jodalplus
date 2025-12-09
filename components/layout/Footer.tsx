@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-secondary text-slate-300 py-12 md:py-16">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4 text-white">
               <BarChart2 size={24} className="text-primary" />
@@ -38,6 +38,19 @@ const Footer: React.FC = () => {
               <li className="text-slate-500">paran6008@naver.com</li>
               <li className="text-slate-500">1555-1229</li>
             </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-slate-700 pt-8 text-xs text-slate-500 leading-relaxed">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+            <span>상호명 : (주)파란</span>
+            <span className="hidden md:inline">|</span>
+            <span>대표자 : 김지건 송강현</span>
+            <span className="hidden md:inline">|</span>
+            <span>사업자등록번호 : 293-86-03414</span>
+          </div>
+          <div className="mt-2">
+            주소 : 서울시 성동구 용답로238-1 카서울닷컴 b103-104
           </div>
         </div>
       </div>

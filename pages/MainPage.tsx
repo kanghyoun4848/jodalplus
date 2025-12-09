@@ -1,12 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, TrendingUp, Award, Database, Cpu, Shield, Globe, Phone, RefreshCw } from 'lucide-react';
+import { ArrowRight, CheckCircle2, TrendingUp, Award, Database, Cpu, Shield, Globe, Phone, RefreshCw, Package, FileCheck, Truck, Users } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
 import { PROBLEM_ITEMS } from '../constants';
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
+
+  // Flyer Page 1: Participating Business Categories
+  const BUSINESS_CATEGORIES = [
+    "일반소모품", "정보 IT기기", "통신장비류", "기계/설비류",
+    "차량·운반기기", "건축·설비자재", "위생·안전장비", "식음료·소모품",
+    "의료 장비/물품", "정보화 사업 용역", "폐기물처리용역", "시설물 유지·관리용역",
+    "육상운송용역", "전시·행사대행 용역", "건설기술용역", "광고 및 디자인 용역",
+    "엔지니어링 기술용역", "학술 용역", "소방시설용역"
+  ];
 
   return (
     <Layout>
@@ -169,83 +178,116 @@ const MainPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Tech/Process Visualization Section */}
+      {/* Core Process Visualization (Replaces Code Section) */}
       <section className="py-24 bg-secondary overflow-hidden relative">
         {/* Background Grid */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="w-full lg:w-1/2">
-              <div className="text-primary font-bold mb-2 flex items-center gap-2">
-                <Cpu size={20} />
-                <span>CORE TECHNOLOGY</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                특허받은 공공입찰 시스템<br/>
-                지능형 분석 엔진
-              </h2>
-              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                조달플러스의 핵심 엔진은 실시간으로 나라장터의 모든 공고를 수집하고, 
-                자연어 처리(NLP)를 통해 귀사에 딱 맞는 공고만을 필터링합니다.
-                낙찰 후에는 최적의 벤더사를 찾아내는 공급망 알고리즘이 작동합니다.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Database, text: "공공데이터 실시간 수집" },
-                  { icon: Globe, text: "벤더사 네트워크 매칭" },
-                  { icon: TrendingUp, text: "투찰 금액 최적화" },
-                  { icon: Shield, text: "적격심사 자동 검증" }
-                ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/10 backdrop-blur-sm">
-                    <f.icon className="text-primary" size={20} />
-                    <span className="text-slate-200 font-medium">{f.text}</span>
-                  </div>
-                ))}
-              </div>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-white/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm border border-white/10">
+              <Cpu size={16} />
+              <span>CORE PROCESS</span>
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              검증된 낙찰 데이터 기반<br/>
+              <span className="text-primary">원스톱 조달 솔루션</span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              공고 분석부터 낙찰, 벤더사 연결, 납품까지.<br/>
+              조달플러스의 AI 시스템과 전문가가 모든 과정을 함께합니다.
+            </p>
+          </div>
 
-            <div className="w-full lg:w-1/2">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
-                <div className="relative bg-slate-900 border border-slate-700 rounded-2xl p-6 shadow-2xl">
-                  <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-4">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    <div className="ml-auto text-xs text-slate-500">analyzing_process.py</div>
-                  </div>
-                  <div className="space-y-3 font-mono text-sm">
-                    <div className="flex gap-4">
-                      <span className="text-slate-600">01</span>
-                      <span className="text-purple-400">import</span>
-                      <span className="text-white">procurement_data</span>
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="text-slate-600">02</span>
-                      <span className="text-blue-400">class</span>
-                      <span className="text-yellow-300">BidAnalyzer</span>:
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="text-slate-600">03</span>
-                      <span className="ml-4 text-slate-300">// Analyze competitive pricing</span>
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="text-slate-600">04</span>
-                      <span className="ml-4 text-purple-400">def</span>
-                      <span className="text-blue-300">calculate_optimal_price</span>(self):
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="text-slate-600">05</span>
-                      <span className="ml-8 text-purple-400">return</span>
-                      <span className="text-green-400">AI_Model.predict(historical_data)</span>
-                    </div>
-                    <div className="flex gap-4 mt-4 p-3 bg-green-500/10 border border-green-500/20 rounded">
-                      <span className="text-green-400">Success: Optimization Complete (99.8%)</span>
-                    </div>
-                  </div>
+          {/* Process Flow Chart (Based on Flyer) */}
+          <div className="relative">
+             {/* Desktop Flow Line */}
+             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-slate-700 via-primary/50 to-slate-700 -translate-y-1/2 z-0"></div>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                {/* Step 1 */}
+                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center hover:border-primary/50 transition-colors">
+                   <div className="w-16 h-16 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30 text-blue-400">
+                      <Database size={32} />
+                   </div>
+                   <div className="text-primary font-bold mb-2 text-sm">STEP 01</div>
+                   <h3 className="text-xl font-bold text-white mb-2">맞춤 공고 분석</h3>
+                   <p className="text-slate-400 text-sm">
+                      AI 최적화 낙찰예정가 제공<br/>
+                      실시간 입찰 공고 리스트업
+                   </p>
                 </div>
+
+                {/* Step 2 */}
+                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center hover:border-primary/50 transition-colors">
+                   <div className="w-16 h-16 bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/30 text-purple-400">
+                      <FileCheck size={32} />
+                   </div>
+                   <div className="text-primary font-bold mb-2 text-sm">STEP 02</div>
+                   <h3 className="text-xl font-bold text-white mb-2">투찰 및 낙찰</h3>
+                   <p className="text-slate-400 text-sm">
+                      전담 직원 밀착 관리<br/>
+                      나라장터 입찰 및 낙찰 성공
+                   </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center hover:border-primary/50 transition-colors">
+                   <div className="w-16 h-16 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30 text-green-400">
+                      <Users size={32} />
+                   </div>
+                   <div className="text-primary font-bold mb-2 text-sm">STEP 03</div>
+                   <h3 className="text-xl font-bold text-white mb-2">벤더사 매칭</h3>
+                   <p className="text-slate-400 text-sm">
+                      낙찰 업체와 공급망(벤더) 매칭<br/>
+                      물품 공급 제안서 및 서류 지원
+                   </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center hover:border-primary/50 transition-colors">
+                   <div className="w-16 h-16 bg-orange-900/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-orange-500/30 text-orange-400">
+                      <Truck size={32} />
+                   </div>
+                   <div className="text-primary font-bold mb-2 text-sm">STEP 04</div>
+                   <h3 className="text-xl font-bold text-white mb-2">납품 및 정산</h3>
+                   <p className="text-slate-400 text-sm">
+                      제조/유통 벤더사를 통한 납품<br/>
+                      최종 수수료 정산 및 완료
+                   </p>
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Participating Business List (Flyer Bottom Section) */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-primary font-bold tracking-wider text-sm uppercase mb-2 block">Who Can Join?</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              사업자 등록증만 있으면<br/>
+              <span className="text-blue-600 underline decoration-4 decoration-blue-200 underline-offset-4">누구나 참여 가능합니다</span>
+            </h2>
+            <p className="text-slate-600 text-lg">
+              제조업, 도소매업, 서비스업, 건설업 등 모든 업종이 조달 시장의 주인공입니다.
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              {BUSINESS_CATEGORIES.map((category, index) => (
+                <div 
+                  key={index} 
+                  className="bg-blue-50 text-slate-700 px-6 py-3 rounded-lg font-medium border border-blue-100 shadow-sm hover:shadow-md hover:bg-white hover:text-primary transition-all cursor-default text-sm md:text-base"
+                >
+                  {category}
+                </div>
+              ))}
+              {/* Highlighted 'All Others' Button */}
+              <div className="bg-red-500 text-white px-8 py-3 rounded-lg font-bold border border-red-600 shadow-md hover:shadow-lg hover:bg-red-600 transition-all cursor-default text-sm md:text-base animate-pulse">
+                그 외 모든 사업자
               </div>
             </div>
           </div>
@@ -274,6 +316,17 @@ const MainPage: React.FC = () => {
                     </div>
                     <div className="text-xl font-bold text-slate-400 line-through decoration-slate-400">
                       4,500만원
+                    </div>
+                  </div>
+
+                  {/* Standard (New) */}
+                  <div className="flex items-center justify-between p-4 rounded-xl bg-white border border-slate-200">
+                     <div className="flex flex-col">
+                      <span className="text-sm font-bold text-slate-700">스탠다드 멤버십</span>
+                      <span className="text-xs text-slate-500">베타 서비스 체험</span>
+                    </div>
+                    <div className="text-xl font-bold text-slate-700">
+                      0원
                     </div>
                   </div>
 
@@ -379,11 +432,12 @@ const MainPage: React.FC = () => {
             평생 할인된 가격으로 AI 조달 파트너를 고용하실 수 있습니다.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Updated Bottom CTA Button for high visibility - Yellow Accent */}
+            {/* Updated Bottom CTA Button for high visibility - Yellow Accent - Forced Style with !important */}
             <Button 
               onClick={() => navigate('/apply')} 
               size="lg" 
-              className="bg-yellow-400 text-slate-900 hover:bg-yellow-300 border-0 shadow-xl font-bold px-10"
+              className="!bg-yellow-400 !text-slate-900 hover:!bg-yellow-500 !border-yellow-400 shadow-xl font-bold px-10"
+              style={{ backgroundColor: '#FACC15', color: '#0F172A' }}
             >
               지금 시작하기 <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
