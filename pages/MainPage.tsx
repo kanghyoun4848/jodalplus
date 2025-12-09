@@ -37,18 +37,21 @@ const MainPage: React.FC = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
-                아무리 편리해도<br />
+                공공조달의 본질은<br />
                 <span className="text-primary relative inline-block">
-                  낙찰되지 않으면
+                  낙찰입니다.
                   <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                   </svg>
-                </span><br/>
-                의미가 없습니다.
+                </span>
               </h1>
               
+              <p className="text-xl md:text-2xl font-bold text-slate-700 mb-4 leading-snug">
+                3,000억 실적 기반 AI가<br className="sm:hidden" /> 기업의 가능성을 수치로 바꿉니다.
+              </p>
+
               <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg font-medium">
-                건설 입찰 전문 플랫폼 <strong className="text-slate-900">JBID</strong>의 3,000억 낙찰 컨설팅 기술을 
+                건설 입찰 전문 플랫폼 <strong className="text-slate-900">JBID</strong>의 낙찰 컨설팅 기술을 
                 그대로 적용했습니다. 편의성은 기본, <strong className="text-primary">압도적인 낙찰 확률</strong>을 경험하세요.
               </p>
               
