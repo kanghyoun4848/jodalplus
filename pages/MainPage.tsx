@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, TrendingUp, Award, Database, Cpu, Shield, Globe, Phone, RefreshCw, Package, FileCheck, Truck, Users } from 'lucide-react';
+import { ArrowRight, CheckCircle2, TrendingUp, Award, Database, Cpu, Shield, Globe, Phone, RefreshCw, Package, FileCheck, Truck, Users, Target, MousePointerClick } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import Button from '../components/ui/Button';
 import { PROBLEM_ITEMS } from '../constants';
@@ -30,27 +30,26 @@ const MainPage: React.FC = () => {
             
             {/* Left Content */}
             <div className="w-full lg:w-1/2 text-left">
-              <div className="inline-flex items-center gap-2 bg-white border border-blue-100 shadow-sm px-4 py-1.5 rounded-full text-sm font-semibold text-primary mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                특허 제 10-2869603호 기술 보유
+              <div className="inline-flex items-center gap-2 bg-slate-900 shadow-lg shadow-blue-900/20 px-4 py-2 rounded-full text-sm font-semibold text-white mb-6 border border-slate-700">
+                <span className="text-yellow-400 font-bold">JBID 3,000억 낙찰 신화</span>
+                <span className="w-px h-3 bg-slate-600"></span>
+                <span>건설 입찰 기술력 탑재</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
-                데이터로 증명하는<br />
+                아무리 편리해도<br />
                 <span className="text-primary relative inline-block">
-                  스마트 조달 플랫폼
+                  낙찰되지 않으면
                   <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                   </svg>
-                </span>
+                </span><br/>
+                의미가 없습니다.
               </h1>
               
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
-                수십 년간 축적된 공공조달 빅데이터를 AI로 분석하여<br className="hidden md:block"/>
-                최적의 낙찰 예정가를 산출합니다. 전문가와 기술의 결합을 경험하세요.
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg font-medium">
+                건설 입찰 전문 플랫폼 <strong className="text-slate-900">JBID</strong>의 3,000억 낙찰 컨설팅 기술을 
+                그대로 적용했습니다. 편의성은 기본, <strong className="text-primary">압도적인 낙찰 확률</strong>을 경험하세요.
               </p>
               
               {/* Special Guarantee Badge */}
@@ -83,16 +82,12 @@ const MainPage: React.FC = () => {
               
               <div className="flex items-center gap-6 text-sm text-slate-500 font-medium">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-primary" />
-                  <span>24시간 분석</span>
+                  <Award size={16} className="text-primary" />
+                  <span>특허 제 10-2869603호</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-primary" />
-                  <span>벤더사 자동매칭</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-primary" />
-                  <span>전담 매니저 배정</span>
+                  <Target size={16} className="text-primary" />
+                  <span>3,000억 낙찰 실적 베이스</span>
                 </div>
               </div>
             </div>
@@ -101,23 +96,25 @@ const MainPage: React.FC = () => {
             <div className="w-full lg:w-1/2 relative hidden md:block">
               <div className="relative z-10 rounded-2xl shadow-2xl bg-white border border-slate-100 overflow-hidden transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3" 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2400" 
                   alt="AI Analytics Dashboard" 
                   className="w-full h-auto object-cover"
                 />
                 {/* Floating Elements */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl shadow-2xl text-center border border-slate-700">
+                   <div className="text-yellow-400 font-bold mb-1 text-sm tracking-wider">SUCCESS RATE</div>
+                   <div className="text-4xl font-black text-white mb-2">3000억+</div>
+                   <div className="text-slate-300 text-xs">누적 낙찰 실적 데이터 기반</div>
+                </div>
+                
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 flex items-center gap-4 animate-bounce" style={{ animationDuration: '3s' }}>
                   <div className="bg-green-100 p-2 rounded-lg text-green-600">
                     <TrendingUp size={24} />
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 font-semibold">낙찰 확률</div>
-                    <div className="text-lg font-bold text-slate-800">+ 124%</div>
+                    <div className="text-lg font-bold text-slate-800">AI 정밀 분석</div>
                   </div>
-                </div>
-                <div className="absolute top-10 -right-6 bg-secondary text-white p-4 rounded-xl shadow-xl flex items-center gap-3">
-                  <Shield size={20} className="text-primary" />
-                  <div className="text-sm font-medium">Verified by AI</div>
                 </div>
               </div>
               {/* Backing Pattern */}
@@ -134,7 +131,7 @@ const MainPage: React.FC = () => {
             {[
               { label: "연간 조달 시장", value: "200조+" },
               { label: "누적 분석 데이터", value: "3.5억+" },
-              { label: "평균 절감 비용", value: "90%" },
+              { label: "낙찰 컨설팅 노하우", value: "3,000억" },
               { label: "파트너 만족도", value: "4.9/5" },
             ].map((stat, idx) => (
               <div key={idx} className="py-8 text-center group hover:bg-slate-50 transition-colors cursor-default">
@@ -147,6 +144,80 @@ const MainPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* NEW SECTION: All-in-One Hook */}
+      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        {/* Background Accents */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/20 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+           <div className="text-center mb-16">
+              <span className="text-yellow-400 font-bold tracking-widest text-sm uppercase mb-3 block">Total Solution</span>
+              <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+                 "복잡한 건 싫고, 낙찰은 받고 싶으신가요?"
+              </h2>
+              <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto">
+                 그렇다면 정답은 <span className="text-white font-bold border-b-2 border-primary">조달플러스</span>입니다.
+              </p>
+           </div>
+
+           <div className="flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-8 max-w-6xl mx-auto">
+              
+              {/* Card 1 */}
+              <div className="flex-1 w-full bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-colors text-center group">
+                 <div className="w-16 h-16 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400 group-hover:scale-110 transition-transform">
+                    <Database size={32} />
+                 </div>
+                 <h3 className="text-xl font-bold mb-3 text-white">AI 공고 분석</h3>
+                 <p className="text-slate-400 text-sm leading-relaxed">
+                    특허받은 알고리즘으로<br/>우리 회사에 딱 맞는 공고를<br/>실시간으로 분석합니다.
+                 </p>
+              </div>
+
+              <div className="hidden md:block text-slate-600">
+                 <MousePointerClick size={24} className="rotate-90 md:rotate-0" />
+              </div>
+
+              {/* Card 2 */}
+              <div className="flex-1 w-full bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-colors text-center group">
+                 <div className="w-16 h-16 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-6 text-green-400 group-hover:scale-110 transition-transform">
+                    <FileCheck size={32} />
+                 </div>
+                 <h3 className="text-xl font-bold mb-3 text-white">압도적 업무 편의</h3>
+                 <p className="text-slate-400 text-sm leading-relaxed">
+                    전담 직원이 서류부터 투찰까지<br/>알아서 관리해 드립니다.<br/>사장님은 결재만 하세요.
+                 </p>
+              </div>
+
+              <div className="hidden md:block text-slate-600">
+                 <MousePointerClick size={24} className="rotate-90 md:rotate-0" />
+              </div>
+
+              {/* Card 3 - Highlighted */}
+              <div className="flex-1 w-full bg-gradient-to-b from-primary/20 to-slate-800/50 border border-primary/50 p-8 rounded-2xl text-center group relative shadow-lg shadow-blue-900/20">
+                 <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">CORE</div>
+                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-primary group-hover:scale-110 transition-transform border border-primary/30">
+                    <Target size={32} />
+                 </div>
+                 <h3 className="text-xl font-bold mb-3 text-white">확실한 낙찰 실적</h3>
+                 <p className="text-slate-300 text-sm leading-relaxed font-medium">
+                    JBID 3,000억 노하우가 담긴<br/>검증된 낙찰 예정가로<br/>성공 확률을 극대화합니다.
+                 </p>
+              </div>
+
+           </div>
+
+           <div className="mt-16 text-center">
+              <div className="inline-block p-1 rounded-full bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600">
+                 <div className="px-8 py-3 rounded-full bg-slate-900 flex items-center gap-3">
+                    <span className="text-slate-300 font-medium">이 모든 것을 한번에</span>
+                    <span className="text-white font-bold text-lg">올인원(All-in-One) 서비스</span>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </section>
 
       {/* Feature/Problem Section */}
       <section className="py-24 bg-white">
