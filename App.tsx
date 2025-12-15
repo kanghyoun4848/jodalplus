@@ -5,10 +5,12 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import FeaturesPage from './pages/FeaturesPage';
 import PricingGuidePage from './pages/PricingGuidePage';
 import ApplyPage from './pages/ApplyPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/service-detail" element={<ServiceDetailPage />} />
